@@ -12,14 +12,14 @@ let box = 55;
 let score = 0;
 
 let food = {
-	x: Math.floor((Math.random() * 8 + 1)) * box,
-	y: Math.floor((Math.random() * 8 + 3)) * box,
+	x: Math.floor((Math.random() * 10)) * box,
+	y: Math.floor((Math.random() * 9)) * box,
 };
 
 let snake = [];
 snake[0] = {
 	x: 9 * box,
-	y: 10 * box
+	y: 9 * box
 };
 
 document.addEventListener("keydown", direction);
@@ -45,7 +45,6 @@ function eatTail(head, arr) {
 }
 
 function drawGame() {
-  ctx.clearRect(0, 0, 609, 609);
 
 	ctx.drawImage(ground, 0, 0);
 
@@ -66,14 +65,14 @@ function drawGame() {
 	if(snakeX == food.x && snakeY == food.y) {
 		score++;
 		food = {
-			x: Math.floor((Math.random() * 8 + 1)) * box,
-			y: Math.floor((Math.random() * 8 + 3)) * box,
+			x: Math.floor((Math.random() * 10)) * box,
+			y: Math.floor((Math.random() * 9)) * box,
 		};
 	} else
 		snake.pop();
 
-	if(snakeX < box || snakeX > box * 17
-		|| snakeY < 3 * box || snakeY > box * 17)
+	if(snakeX < box || snakeX > box * 11
+		|| snakeY < 1 * box || snakeY > box * 10)
 		clearInterval(game);
 
 	if(dir == "left") snakeX -= box;
